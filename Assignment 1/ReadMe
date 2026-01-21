@@ -1,0 +1,5 @@
+This project is a Flask-based web application that implements the TOPSIS (Technique for Order Preference by Similarity to Ideal Solution) method for multi-criteria decision making.
+
+Users can upload a CSV file containing alternatives and criteria values, provide corresponding weights and impacts, and submit their email ID. The application processes the data using the TOPSIS algorithm, generates a ranked result file, and sends the output CSV to the user via email.
+
+The project demonstrates the integration of backend logic, web interface, and email communication, and also reuses the previously developed TOPSIS Python package for modularity and code reusability.

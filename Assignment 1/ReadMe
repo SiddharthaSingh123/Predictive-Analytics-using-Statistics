@@ -1,5 +1,137 @@
-This project is a Flask-based web application that implements the TOPSIS (Technique for Order Preference by Similarity to Ideal Solution) method for multi-criteria decision making.
+Methodology, Results, and Analysis
+1. Methodology
 
-Users can upload a CSV file containing alternatives and criteria values, provide corresponding weights and impacts, and submit their email ID. The application processes the data using the TOPSIS algorithm, generates a ranked result file, and sends the output CSV to the user via email.
+This project uses the TOPSIS (Technique for Order Preference by Similarity to Ideal Solution) method, which is a widely used Multi-Criteria Decision-Making (MCDM) technique.
+The objective of TOPSIS is to rank a set of alternatives by comparing their closeness to an ideal best solution and their distance from an ideal worst solution.
 
-The project demonstrates the integration of backend logic, web interface, and email communication, and also reuses the previously developed TOPSIS Python package for modularity and code reusability.
+The overall methodology followed in this project is explained below.
+
+Step 1: Input Data Collection
+
+The input is provided in the form of a CSV file.
+
+The first column of the file represents the alternatives (such as products, projects, or options).
+
+The remaining columns represent the decision criteria.
+
+In addition, the user provides:
+
+Weights, which indicate the importance of each criterion.
+
+Impacts, where:
+
++ denotes a benefit criterion (higher value is preferred),
+
+- denotes a cost criterion (lower value is preferred).
+
+Step 2: Normalization of the Decision Matrix
+
+Since different criteria may be measured using different units and scales, normalization is performed.
+Normalization converts all criterion values into dimensionless values, ensuring that they are comparable and no single criterion dominates the decision due to scale differences.
+
+Step 3: Weighted Normalized Decision Matrix
+
+After normalization, each criterion value is multiplied by its corresponding weight.
+This step incorporates the relative importance of each criterion into the decision-making process and reflects the preferences of the decision-maker.
+
+Step 4: Determination of Ideal Best and Ideal Worst Solutions
+
+Based on the impacts provided by the user:
+
+Ideal Best Solution represents the most desirable values for each criterion.
+
+Ideal Worst Solution represents the least desirable values for each criterion.
+
+For benefit criteria, higher values are considered better, while for cost criteria, lower values are preferred.
+
+Step 5: Distance Calculation
+
+For each alternative, the distance from both the ideal best solution and the ideal worst solution is calculated.
+These distances indicate how close or far an alternative is from the most desirable and least desirable scenarios.
+
+Step 6: TOPSIS Score Calculation
+
+A TOPSIS score is computed for each alternative based on its relative closeness to the ideal best solution and distance from the ideal worst solution.
+
+The score lies between 0 and 1.
+
+A higher score indicates a better alternative.
+
+Step 7: Ranking of Alternatives
+
+Alternatives are ranked in descending order of their TOPSIS scores.
+The alternative with the highest score is assigned Rank 1, indicating it as the most preferred option.
+
+2. Result Table
+
+After processing the input data, the output is generated in the form of a CSV file containing:
+
+Column Name	Description
+Alternative Name	Name or ID of the alternative
+Criteria Columns	Original values of decision criteria
+TOPSIS Score	Calculated performance score
+Rank	Final rank of the alternative
+Interpretation
+
+Alternatives with higher TOPSIS scores are considered better.
+
+The ranking helps decision-makers select the most suitable alternative based on multiple criteria.
+
+3. Result Graph (Optional Visualization)
+
+A graphical representation of the results can be created using a bar chart or line chart, where:
+
+The X-axis represents alternatives.
+
+The Y-axis represents TOPSIS scores.
+
+Purpose of the Graph
+
+Provides a clear visual comparison among alternatives.
+
+Makes the decision-making process more intuitive.
+
+Helps identify alternatives with similar performance.
+
+4. Web Application Workflow
+
+The user uploads the input CSV file.
+
+The user enters weights, impacts, and an email ID.
+
+The Flask backend validates all inputs.
+
+The TOPSIS algorithm is applied to the data.
+
+A result CSV file is generated.
+
+The output file is sent to the user via email.
+
+5. Advantages of the Approach
+
+Effectively handles multiple conflicting criteria.
+
+Computationally efficient and easy to implement.
+
+Easy to understand and interpret.
+
+Scalable for real-world decision-making problems.
+
+Modular design combining algorithmic logic and web interface.
+
+6. Applications of TOPSIS
+
+Product selection
+
+Supplier evaluation
+
+College or course selection
+
+Investment decision-making
+
+Resource prioritization
+
+7. Conclusion
+
+This project successfully demonstrates the implementation of the TOPSIS method and its integration into a user-friendly web application.
+By combining decision-making algorithms with Python programming and web development, the system provides a practical and scalable solution for solving real-world multi-criteria decision problems.

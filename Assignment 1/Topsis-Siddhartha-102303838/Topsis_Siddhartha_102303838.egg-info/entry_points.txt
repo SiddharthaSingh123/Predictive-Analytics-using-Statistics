@@ -1,0 +1,2 @@
+[console_scripts]
+topsis = topsis_siddhartha_102303838.topsis:main

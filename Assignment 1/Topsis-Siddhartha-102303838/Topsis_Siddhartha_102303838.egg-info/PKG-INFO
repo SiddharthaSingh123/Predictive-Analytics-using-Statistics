@@ -1,0 +1,38 @@
+Metadata-Version: 2.4
+Name: Topsis-Siddhartha-102303838
+Version: 0.0.1
+Summary: TOPSIS implementation using Python
+Author: Siddhartha
+Author-email: your_email@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: pandas
+Requires-Dist: numpy
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# TOPSIS Package
+
+This package implements the TOPSIS method.
+
+## Installation
+pip install Topsis-Siddhartha-ROLLNO
+
+## Usage
+topsis input.csv 1,1,1,2 +,+,-,+ output.csv
+
+## Input Format
+First column contains alternatives.
+Remaining columns contain numeric values.
+
+## Output
+Adds Topsis Score and Rank columns.
+  

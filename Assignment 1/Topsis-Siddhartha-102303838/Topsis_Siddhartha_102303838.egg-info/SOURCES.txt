@@ -1,0 +1,10 @@
+README.md
+setup.py
+Topsis_Siddhartha_102303838.egg-info/PKG-INFO
+Topsis_Siddhartha_102303838.egg-info/SOURCES.txt
+Topsis_Siddhartha_102303838.egg-info/dependency_links.txt
+Topsis_Siddhartha_102303838.egg-info/entry_points.txt
+Topsis_Siddhartha_102303838.egg-info/requires.txt
+Topsis_Siddhartha_102303838.egg-info/top_level.txt
+topsis_siddhartha_102303838/__init__.py
+topsis_siddhartha_102303838/topsis.py

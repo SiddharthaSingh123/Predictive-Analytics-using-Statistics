@@ -1,0 +1,117 @@
+# Learning Probability Density Functions using GAN (NO₂ Data)
+
+## Objective
+The objective of this project is to learn an **unknown probability density function (PDF)** of a transformed random variable using **data only**, without assuming any parametric form of the distribution.  
+A **Generative Adversarial Network (GAN)** is used to implicitly learn the distribution from samples.
+
+The NO₂ concentration values from the India Air Quality dataset are used as the base feature.
+
+---
+
+## Dataset
+- Source: India Air Quality Dataset (Kaggle)
+- Feature used: **NO₂ concentration (`no2`)**
+- Missing values are removed before processing.
+
+---
+
+## Transformation Parameters
+
+The original data \(x\) is transformed using the nonlinear transformation:
+
+\[
+z = x + a_r \sin(b_r x)
+\]
+
+where the parameters depend on the university roll number \(r\).
+
+For  
+**Roll Number:** `102303838`
+
+\[
+a_r = 0.5 \times (r \bmod 7) = 3.0
+\]
+
+\[
+b_r = 0.3 \times ((r \bmod 5) + 1) = 1.2
+\]
+
+**Final transformation used:**
+\[
+z = x + 3.0 \sin(1.2x)
+\]
+
+---
+
+## GAN Architecture Description
+
+A **vanilla Generative Adversarial Network (GAN)** is used to learn the unknown distribution of the transformed variable \(z\).
+
+### Generator
+- Input: Random noise sampled from a standard normal distribution \( \mathcal{N}(0,1) \)
+- Architecture:
+  - Fully connected layer (1 → 32) + ReLU
+  - Fully connected layer (32 → 32) + ReLU
+  - Fully connected layer (32 → 1)
+- Output: A real-valued scalar representing a generated sample \(z_f\)
+
+The generator learns a nonlinear mapping from noise to the data space to produce samples that resemble the real transformed data.
+
+---
+
+### Discriminator
+- Input: A scalar value (real \(z\) or generated \(z_f\))
+- Architecture:
+  - Fully connected layer (1 → 32) + ReLU
+  - Fully connected layer (32 → 32) + ReLU
+  - Fully connected layer (32 → 1) + Sigmoid
+- Output: Probability indicating whether the input sample is real or fake
+
+The discriminator is trained as a binary classifier.
+
+---
+
+### Training Details
+- Loss function: Binary Cross-Entropy Loss
+- Optimizer: Adam optimizer
+- Learning rate: 0.001
+- Training is performed alternately between the generator and discriminator.
+
+---
+
+## PDF Estimation from GAN Samples
+
+After training the GAN:
+1. A large number of samples are generated using the trained generator.
+2. The probability density function is approximated using:
+   - Histogram-based density estimation
+   - Kernel Density Estimation (KDE)
+
+These methods provide a non-parametric approximation of the learned PDF.
+
+---
+
+## Observations
+
+### Mode Coverage
+- The generator successfully captures the major modes present in the real transformed data.
+- No significant mode collapse is observed, indicating good diversity in generated samples.
+
+---
+
+### Training Stability
+- Training remains stable across epochs.
+- Generator and discriminator losses oscillate within a bounded range, which is characteristic of adversarial learning.
+- Normalization of the transformed data improves convergence and stability.
+
+---
+
+### Quality of Generated Distribution
+- The generated samples closely match the real data distribution in terms of shape and spread.
+- The estimated PDF obtained from generator samples aligns well with the empirical distribution.
+- The GAN effectively learns the unknown probability density without assuming any analytical form.
+
+---
+
+## Conclusion
+This project demonstrates that a Generative Adversarial Network can successfully learn an unknown probability density function purely from data samples, even when the underlying transformation introduces nonlinear complexity.

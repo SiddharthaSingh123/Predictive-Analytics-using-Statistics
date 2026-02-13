@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mashup Generator</title>
+</head>
+<body>
+    <h2>Mashup Generator</h2>
+
+    <form action="/create" method="POST">
+        <label>Singer Name:</label><br>
+        <input type="text" name="singer" required><br><br>
+
+        <label>Number of Videos (>10):</label><br>
+        <input type="number" name="videos" required><br><br>
+
+        <label>Duration (>20 sec):</label><br>
+        <input type="number" name="duration" required><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br><br>
+
+        <button type="submit">Create Mashup</button>
+    </form>
+
+</body>
+</html>
